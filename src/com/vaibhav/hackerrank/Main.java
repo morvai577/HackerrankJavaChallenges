@@ -6,13 +6,10 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("================================");
-        for(int i = 0; i < 3; i++) {
-            String str = sc.next();
-            int x = sc.nextInt();
-            System.out.printf("%-15s", str);
-            System.out.printf("%03d%n", x );
+        int x = sc.nextInt();
+
+        for (int y = 1; y <= 10; y++){
+            System.out.println(x + " x " + y + " =  " + x*y);
         }
-        System.out.println("================================");
     }
 }
