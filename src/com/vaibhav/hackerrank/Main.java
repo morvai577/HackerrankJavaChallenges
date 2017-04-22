@@ -1,22 +1,29 @@
 package com.vaibhav.hackerrank;
 
 import java.util.Scanner;
-import java.io.BufferedReader;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scan1 = new Scanner(System.in);
-        Scanner scan2 = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
 
-        int a = scan1.nextInt();
-        double b = scan1.nextDouble();
+        for(int i = 0; i < t; i++) {
 
-        String c = scan2.nextLine(); // Have to create a new scanner
+            try {
+                long x = sc.nextLong();
+                System.out.println(x + " can be fitted in:");
+                //if (x >= -128 && x <= 127) System.out.println("* byte");
+                //Complete the code
+                if (x >= -128 && x <= 127) System.out.println("* byte");
+                if (x >= -32768 && x <= 32767) System.out.println("* short");
+                if (x >= -2147483648 && x <= 2147483647) System.out.println("* int");
+                if (x >= -9.223372e+18 && x <= 9.223372e+18) System.out.println("* long");
+            } catch (Exception e) {
+                System.out.println(sc.next() + " can't be fitted anywhere.");
+            }
 
-        System.out.println("String: " + c);
-        System.out.println("Double: " + b);
-        System.out.println("Int: " + a);
+        }
     }
 }
