@@ -1,50 +1,29 @@
 package com.vaibhav.hackerrank;
 
-import java.util.Scanner;
-import java.security.*;
+import java.io.*;
 import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.time.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String month = in.next();
+        String day = in.next();
+        String year = in.next();
 
-        DoNotTerminate.forbidExit();
-
+        StringBuilder dateString = new StringBuilder(day + "/" + month + "/" + year);
+        SimpleDateFormat format = new SimpleDateFormat("dd/M/yyyy");
         try {
-            Scanner in = new Scanner(System.in);
-            int n = in.nextInt();
-            in.close();
-            String s = String.valueOf(n);
-
-            if (n == Integer.parseInt(s)) {
-                System.out.println("Good job");
-            } else {
-                System.out.println("Wrong answer.");
-            }
-        } catch (DoNotTerminate.ExitTrappedException e) {
-            System.out.println("Unsuccessful Termination!!");
+            Date dt1 = format.parse(dateString.toString());
+            DateFormat format2 = new SimpleDateFormat("EEEE");
+            String finalDay = format2.format(dt1);
+            System.out.println(finalDay.toUpperCase());
+        } catch (Exception e) {
+            System.out.println("Error");
         }
-    }
-}
-
-//The following class will prevent you from terminating the code using exit(0)!
-class DoNotTerminate {
-
-    public static class ExitTrappedException extends SecurityException {
-
-        private static final long serialVersionUID = 1;
-    }
-
-    public static void forbidExit() {
-        final SecurityManager securityManager = new SecurityManager() {
-            @Override
-            public void checkPermission(Permission permission) {
-                if (permission.getName().contains("exitVM")) {
-                    throw new ExitTrappedException();
-                }
-            }
-        };
-        System.setSecurityManager(securityManager);
     }
 }
