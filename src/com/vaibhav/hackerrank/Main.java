@@ -4,26 +4,31 @@ import java.io.*;
 import java.util.*;
 import java.text.*;
 import java.math.*;
-import java.time.*;
+import java.util.regex.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String month = in.next();
-        String day = in.next();
-        String year = in.next();
+        Scanner scanner = new Scanner(System.in);
+        double payment = scanner.nextDouble();
+        scanner.close();
 
-        StringBuilder dateString = new StringBuilder(day + "/" + month + "/" + year);
-        SimpleDateFormat format = new SimpleDateFormat("dd/M/yyyy");
-        try {
-            Date dt1 = format.parse(dateString.toString());
-            DateFormat format2 = new SimpleDateFormat("EEEE");
-            String finalDay = format2.format(dt1);
-            System.out.println(finalDay.toUpperCase());
-        } catch (Exception e) {
-            System.out.println("Error");
-        }
+        NumberFormat us_format = NumberFormat.getCurrencyInstance(Locale.US);
+        String us = us_format.format(payment);
+
+        NumberFormat india_format = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
+        String india = india_format.format(payment);
+
+        NumberFormat china_format = NumberFormat.getCurrencyInstance(Locale.CHINA);
+        String china = china_format.format(payment);
+
+        NumberFormat france_format = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+        String france = france_format.format(payment);
+
+        System.out.println("US: " + us);
+        System.out.println("India: " + india);
+        System.out.println("China: " + china);
+        System.out.println("France: " + france);
     }
 }
