@@ -10,25 +10,29 @@ import java.util.regex.*;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        double payment = scanner.nextDouble();
-        scanner.close();
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        String B=sc.next();
 
-        NumberFormat us_format = NumberFormat.getCurrencyInstance(Locale.US);
-        String us = us_format.format(payment);
+        int stringCount = A.length() + B.length();
+        System.out.println(stringCount);
 
-        NumberFormat india_format = NumberFormat.getCurrencyInstance(new Locale("en", "IN"));
-        String india = india_format.format(payment);
+        if(A.compareTo(B) > 0) {
+            System.out.println("Yes");
+        }
+        else {
+            System.out.println("No");
+        }
 
-        NumberFormat china_format = NumberFormat.getCurrencyInstance(Locale.CHINA);
-        String china = china_format.format(payment);
+        String newA = capitalize(A);
+        String newB = capitalize(B);
 
-        NumberFormat france_format = NumberFormat.getCurrencyInstance(Locale.FRANCE);
-        String france = france_format.format(payment);
+        System.out.println(newA+ " "+newB);
 
-        System.out.println("US: " + us);
-        System.out.println("India: " + india);
-        System.out.println("China: " + china);
-        System.out.println("France: " + france);
     }
+
+    private static String capitalize(final String line) {
+        return Character.toUpperCase(line.charAt(0)) + line.substring(1);
+    }
+
 }
