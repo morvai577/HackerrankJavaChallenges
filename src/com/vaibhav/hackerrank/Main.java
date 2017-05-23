@@ -11,12 +11,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Scanner in = new Scanner(System.in);
-        String S = in.next();
-        int start = in.nextInt();
-        int end = in.nextInt();
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        String B = new StringBuilder(A).reverse().toString();
 
-        System.out.println(S.substring(start, end));
+        if (A.equals(B)){
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
     }
-
 }
